@@ -21,10 +21,10 @@ func Start() {
 	urlService := service.UrlInteractorInit(urlRepo)
 	addController := controller.UrlAddHandlerInit(urlService)
 	getController := controller.UrlGetHandlerInit(urlService)
-	allController := controller.UrlAllHandlerInit(urlService)
+	//allController := controller.UrlAllHandlerInit(urlService)
 	router.HandleFunc("/api/create-short-url", addController.UrlAddController).Methods(http.MethodPost)
 	router.HandleFunc("/api/{urlShortCode}", getController.UserGetController).Methods(http.MethodGet)
-	router.HandleFunc("/api/count-all-url", allController.UrlAllController).Methods(http.MethodGet)
+	//router.HandleFunc("/api/count-all-url", allController.UrlAllController).Methods(http.MethodGet)
 	address := os.Getenv("SERVER_ADDR")
 	//address := "localhost"
 	port := os.Getenv("SERVER_PORT")

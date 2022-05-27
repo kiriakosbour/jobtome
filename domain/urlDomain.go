@@ -11,11 +11,11 @@ import (
 type Urls struct {
 	OriginalUrl string `json:"original-url"`
 	ShortUrl    string `json:"short-url"`
-	UserId      string `json:"user-id"`
+	Clicks      int
 }
 
-func (u *Urls) GenerateShortLink(initialLink string, userId string) string {
-	urlHashBytes := sha256Of(initialLink + userId)
+func (u *Urls) GenerateShortLink(initialLink string) string {
+	urlHashBytes := sha256Of(initialLink)
 	generatedNumber := new(big.Int).SetBytes(urlHashBytes).Uint64()
 	finalString := base58Encoded([]byte(fmt.Sprintf("%d", generatedNumber)))
 	return finalString[:8]

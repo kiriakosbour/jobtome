@@ -15,17 +15,16 @@ func UrlInteractorInit(repository domain.UrlRepoInt) *UrlInteractor {
 }
 
 type UrlInteractorInt interface {
-	CreateTheUrlShortingService(longUrl string, userId string) string
+	CreateTheUrlShortingService(longUrl string) string
 	RetrieveTheUrlShortingService(shortUrl string) string
 	RetrieveAllTheUrlsSService() int
 }
 
-func (u *UrlInteractor) CreateTheUrlShortingService(longUrl string, userId string) string {
+func (u *UrlInteractor) CreateTheUrlShortingService(longUrl string) string {
 	var urlDomain domain.Urls
-	shortLink := urlDomain.GenerateShortLink(longUrl, userId)
+	shortLink := urlDomain.GenerateShortLink(longUrl)
 	urlDomain.OriginalUrl = longUrl
 	urlDomain.ShortUrl = shortLink
-	urlDomain.UserId = userId
 	respFromRedis, err := u.repo.SetKey(urlDomain, 6*time.Hour)
 	if err != nil {
 		return ""

@@ -26,10 +26,10 @@ func (u *UrlAddHandler) UrlAddController(w http.ResponseWriter, r *http.Request)
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(errorMsg)
 	}
-	result := u.service.CreateTheUrlShortingService(urls.OriginalUrl, urls.UserId)
+	result := u.service.CreateTheUrlShortingService(urls.OriginalUrl)
 	if result == "" {
 		w.WriteHeader(http.StatusInternalServerError)
-		json.NewEncoder(w).Encode("There is an error during creation of the shortS url")
+		json.NewEncoder(w).Encode("There is an error during creation of the short url")
 	} else {
 		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(result)
