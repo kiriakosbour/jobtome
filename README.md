@@ -15,3 +15,8 @@ A version of redis must be installed in order for the application to properly fu
 DB_URL --> redis:6379
 DB_VERSION --> redis
 PORT --> 8080
+
+Using docker
+Clone the repo
+Docker compose
+docker-compose up --build
