@@ -16,7 +16,7 @@ DB_URL --> redis:6379
 DB_VERSION --> redis
 PORT --> 8080
 
-Using docker
+# Using docker
 Clone the repo
 Docker compose
 docker-compose up --build
