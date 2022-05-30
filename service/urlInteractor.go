@@ -22,6 +22,9 @@ type UrlInteractorInt interface {
 
 func (u *UrlInteractor) CreateTheUrlShortingService(longUrl string) string {
 	var urlDomain domain.Urls
+	if longUrl == "" {
+		return ""
+	}
 	shortLink := urlDomain.GenerateShortLink(longUrl)
 	urlDomain.OriginalUrl = longUrl
 	urlDomain.ShortUrl = shortLink
@@ -33,6 +36,9 @@ func (u *UrlInteractor) CreateTheUrlShortingService(longUrl string) string {
 }
 func (u *UrlInteractor) RetrieveTheUrlShortingService(shortUrl string) string {
 	var urlDomain domain.Urls
+	if shortUrl == "" {
+		return ""
+	}
 	urlDomain.ShortUrl = shortUrl
 	respFromRedis, err := u.repo.GetKey(urlDomain)
 	log.Print(shortUrl)

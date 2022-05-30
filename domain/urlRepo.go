@@ -10,7 +10,7 @@ import (
 
 type UrlRepo struct {
 }
-type storageService struct {
+type StorageService struct {
 	redisClient *redis.Client
 	ctx         context.Context
 }
@@ -25,9 +25,9 @@ type UrlRepoInt interface {
 	GetAllValues() map[string]string
 }
 
-func (u *UrlRepo) initializeRedis() *storageService {
+func (u *UrlRepo) initializeRedis() *StorageService {
 	var ctx = context.Background()
-	storageService := &storageService{}
+	storageService := &StorageService{}
 	// dataSource := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPasswd, dbAddr, dbPort, dbName)
 	c := redis.NewClient(&redis.Options{
 		Addr: "redis:6379",
