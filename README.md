@@ -1,5 +1,5 @@
 # jobtome
-The application exposes three endpoints 
+The application exposes two endpoints 
 - /api/create-short-url
 - /api/{urlShortCode}
 
